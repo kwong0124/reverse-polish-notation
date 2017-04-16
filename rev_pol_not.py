@@ -1,18 +1,30 @@
-# import operator module
 import operator
+from numbers import Number
+from decimal import Decimal
+from fractions import Fraction
 
 # To-do list:
-# -add dictionary lookup for operators instead of if statements
 # -make it so that the program can accept other types of numbers
 # -add a main function which prints the final answer
 # -try additional test cases
+# -check for incorrectly entered calculations
+# -wrap code that is too long so that it goes onto another line
+# - add functionality to take user input
 
 # holds the numbrs in the stack
 stack = []
 
 # keeps a list of available inputs (numbers and operators)
-numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+numbers = list(range(100))
 operators = ['+', '-', '/', '*']
+
+print('''
+    This program is a reverse polish notation calculator.
+    The calculator can accept any whole number integers as well
+    as opeators: +, -, *, /''')
+print('''
+    The rules for reverse polish notation calculation can be found at
+    https://en.wikipedia.org/wiki/Reverse_Polish_notation''')
 
 # make a function to evaluate the stack
 def evaluate_input(*args):
@@ -50,13 +62,6 @@ def eval_ops(symbol, a, b):
 
     stack.append(operator_dict[symbol])
 
-    #if symbol == '+':
-    #    stack.append(operator.add(a, b))
-    #if symbol == '*':
-    #    stack.append(operator.mul(a, b))
-    #if symbol == '-':
-    #    stack.append(operator.sub(a, b))
-    #if symbol == '/':
-    #    stack.append(operator.truediv(a, b))
-
-evaluate_input(7, 9, 1, '+', 4, '*', '+', 3, '-')
+if __name__ == '__main__':
+    # how to input both strings and ints?
+    evaluate_input(5, 4, '+')
