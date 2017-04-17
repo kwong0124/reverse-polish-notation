@@ -27,12 +27,23 @@ print('''
     https://en.wikipedia.org/wiki/Reverse_Polish_notation''')
 
 # make a function to evaluate the stack
-def evaluate_input(*args):
+def evaluate_input(calculation):
     '''Iterates through the args and determines whether each arg is
     a number, an operator or none of the above. If the arg is a number, it gets
     added to the stack, if the arg is an operator, the eval_ops function is
     called. If the arg is neither a number or an operator, the function will
     display an error message and end the program.'''
+
+    # Split user inputs into a list separated by spaces
+    num_ops = calculation.split(' ')
+
+    for item in num_ops:
+        try:
+            stack.append(float(item))
+            print(stack)
+        except:
+            print('This is not a number')
+
 
     for arg in args:
         if arg in numbers:
@@ -64,4 +75,4 @@ def eval_ops(symbol, a, b):
 
 if __name__ == '__main__':
     # how to input both strings and ints?
-    evaluate_input(5, 4, '+')
+    evaluate_input(input('Please enter numbers and operators separated by a space: '))
