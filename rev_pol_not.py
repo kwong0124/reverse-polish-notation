@@ -2,10 +2,6 @@
 import operator
 import math
 
-# To-do list:
-# -check for incorrectly entered calculations
-
-
 # holds the numbrs in the stack
 stack = []
 
@@ -17,14 +13,16 @@ print('''
     polish notation calculation can be found at
     https://en.wikipedia.org/wiki/Reverse_Polish_notation .
     You may enter any of the following operators, +, -, *, /, for use in your
-    calculations. Enter each number and operator in reverse polish notation -
-    each value should be separated by space.
+    calculations. Enter calculations in reverse polish notation. Each value
+    entered should be separated by space.
     ''')
 
-# make a function to evaluate the stack
+
 def is_number(num):
-    '''Determines whether each item in equation is a number using try and
-    except block'''
+    '''
+    Determines whether each item in equation is a number using try and
+    except block
+    '''
 
     try:
         float(num)
@@ -34,6 +32,12 @@ def is_number(num):
 
 
 def evaluate_input(arg):
+    '''
+    Iterates through each item in equation to check if it is a number. If
+    is_number returns true, the float of the item is appended to the stack.
+    Else, the eval_ops equation is called to perform calculations on the stack.
+    '''
+
     for item in arg:
         if is_number(item):
             stack.append(float(item))
@@ -42,21 +46,24 @@ def evaluate_input(arg):
 
 
 def eval_ops(symbol, a, b):
-    '''The eval_ops function take three inputs - an operator (called symbol), an
+    '''
+    The eval_ops function take three inputs - an operator (called symbol), an
     'a' argument and a 'b' argument, and performs the calculation implied by the
     operator. Operations are performed using the operator module. For example,
     if the operator is subtraction (-), a = 2 and b = 4, the function will
-    calculate 2 - 4 = -2.'''
+    calculate 2 - 4 = -2.
+    '''
 
-    # create a dict to map input operators to operator functions
     operator_dict = {'+': operator.add(a, b), '-': operator.sub(a, b), '*': operator.mul(a, b), '/': operator.truediv(a, b)}
 
     stack.append(operator_dict[symbol])
+
 
 def main():
     equation = input('Enter the function you would like to calculate with a space between each value: ').split()
     answer = evaluate_input(equation)
     print('answer is: {}'.format(stack))
+    
 
 if __name__ == '__main__':
     # how to input both strings and ints?
