@@ -2,10 +2,8 @@
 import operator
 import math
 
-# holds the numbrs in the stack
 stack = []
 
-# Defines the operators that can be used
 operators = ['+', '-', '/', '*']
 
 print('''
@@ -63,8 +61,7 @@ def main():
     equation = input('Enter the function you would like to calculate with a space between each value: ').split()
     answer = evaluate_input(equation)
     print('answer is: {}'.format(stack))
-    
+
 
 if __name__ == '__main__':
-    # how to input both strings and ints?
     main()
